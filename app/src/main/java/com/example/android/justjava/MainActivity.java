@@ -15,10 +15,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        display(quantity);
+        displayPrice(quantity);
     }
 
     public void submitOrder(View view) {
-        display(quantity);
         displayPrice(quantity * 5);
     }
 
