@@ -9,7 +9,7 @@ import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    int numberOfCoffees = 2;
+    private int quantity = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,23 +18,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submitOrder(View view) {
-        int quantity = Integer.parseInt((String)(((TextView)findViewById(R.id.quantity_text_view)).getText()));
         display(quantity);
         displayPrice(quantity * 5);
     }
 
     public void increment(View view) {
-        TextView quantityView = (TextView) findViewById(R.id.quantity_text_view);
-        Integer quantity = Integer.parseInt((String) quantityView.getText()) + 1;
-        quantityView.setText(quantity.toString());
+        quantity += 1;
+        display(quantity);
     }
 
     public void decrement(View view) {
-        TextView quantityView = (TextView) findViewById(R.id.quantity_text_view);
-        Integer quantity = Integer.parseInt((String) quantityView.getText()) - 1;
-        quantityView.setText(quantity.toString());
+        quantity -= 1;
+        display(quantity);
     }
 
+    /**
+     * Displays the quantity to the screen
+     * @param number holds the quantity that will be displayed
+     */
     private void display(int number) {
         TextView view = (TextView) findViewById(R.id.quantity_text_view);
         view.setText("" + number);
