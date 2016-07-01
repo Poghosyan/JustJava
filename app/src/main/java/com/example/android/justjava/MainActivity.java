@@ -9,6 +9,8 @@ import java.text.NumberFormat;
 
 public class MainActivity extends AppCompatActivity {
 
+    int numberOfCoffees = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,8 +18,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void submitOrder(View view) {
-        display(2);
-        displayPrice(2 * 5);
+        int quantity = Integer.parseInt((String)(((TextView)findViewById(R.id.quantity_text_view)).getText()));
+        display(quantity);
+        displayPrice(quantity * 5);
+    }
+
+    public void increment(View view) {
+        TextView quantityView = (TextView) findViewById(R.id.quantity_text_view);
+        Integer quantity = Integer.parseInt((String) quantityView.getText()) + 1;
+        quantityView.setText(quantity.toString());
+    }
+
+    public void decrement(View view) {
+        TextView quantityView = (TextView) findViewById(R.id.quantity_text_view);
+        Integer quantity = Integer.parseInt((String) quantityView.getText()) - 1;
+        quantityView.setText(quantity.toString());
     }
 
     private void display(int number) {
